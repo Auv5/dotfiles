@@ -28,3 +28,4 @@ map <leader>d :bdelete<CR>
 map ! :!
 
 autocmd BufWritePost ~/.vimrc source ~/.vimrc
+autocmd FileType make setl noexpandtab
