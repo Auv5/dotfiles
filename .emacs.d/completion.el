@@ -3,3 +3,8 @@
 
 ;; Ido - Complete file names in file open dialog.
 (ido-mode 1)
+
+;; Smex - Ido-style autocomplete for M-x.
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-S-x") 'smex-major-mode-commands)
