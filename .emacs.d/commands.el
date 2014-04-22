@@ -17,3 +17,21 @@
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
+
+;; Toggle of back to indentation and beginning of line.
+(defun conditional-back-to-indent ()
+  (interactive)
+  (setq initial-point (point))
+  (back-to-indentation)
+  (if (eq (point) initial-point)
+      (move-beginning-of-line nil)))
+
+;; Bind to C-a to replace old beginning-of-line command.
+(global-set-key (kbd "C-a") 'conditional-back-to-indent)
+
+;; Quicker keybindings of window manipulation functions.
+(global-set-key (kbd "M-0") 'delete-window)
+(global-set-key (kbd "M-1") 'delete-other-windows)
+(global-set-key (kbd "M-2") 'split-window-below)
+(global-set-key (kbd "M-3") 'split-window-right)
+(global-set-key (kbd "M-o") 'other-window)

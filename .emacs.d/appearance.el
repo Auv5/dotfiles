@@ -11,6 +11,8 @@
 
 ;; Set the default theme.
 (load-theme 'zenburn t)
-;; Size 17 normal Inconsolata. If the font doesn't exist on this system, just let the default be used.
-(defconst DEFAULT-FACE-FONT "-unknown-Inconsolata-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1")
+;; Size 17 normal Inconsolata. If the font doesn't exist on this system, just
+;; let the default be used.
+(defconst DEFAULT-FACE-FONT
+  "-unknown-Inconsolata-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1")
 (if (font-existsp DEFAULT-FACE-FONT) (set-face-font 'default DEFAULT-FACE-FONT))

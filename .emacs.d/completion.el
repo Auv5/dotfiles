@@ -8,3 +8,9 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-S-x") 'smex-major-mode-commands)
+
+;; Auto-Complete.el completion in code buffers.
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
+(require 'auto-complete-config)
+(ac-config-default)
