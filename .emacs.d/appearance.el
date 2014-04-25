@@ -12,9 +12,6 @@
 ;; Match parens more visibly
 (show-paren-mode 1)
 
-;; Show line numbers in buffer
-(global-linum-mode 1)
-
 ;; Set the default theme.
 (load-theme 'zenburn t)
 ;; Size 17 normal Inconsolata. If the font doesn't exist on this system, just

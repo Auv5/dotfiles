@@ -26,6 +26,17 @@
   (if (eq (point) initial-point)
       (move-beginning-of-line nil)))
 
+(setq linum-enabled nil)
+
+(defun toggle-linum-mode ()
+  (interactive)
+  (setq linum-enabled (not linum-enabled))
+  (global-linum-mode (if linum-enabled 1 0))
+  (linum-mode (if linum-enabled 1 0)))
+
+;; Bind C-c C-c to linum toggle.
+(global-set-key (kbd "C-c C-c") 'toggle-linum-mode)
+
 ;; Bind to C-a to replace old beginning-of-line command.
 (global-set-key (kbd "C-a") 'conditional-back-to-indent)
 
