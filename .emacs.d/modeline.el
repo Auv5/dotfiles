@@ -31,7 +31,7 @@
 ;; This will right-align the text in mode-line-align-right with three spaces of padding on the right.
 (setq-default mode-line-format (list
    mode-line-align-left
-   (mode-line-fill 'mode-line (+ 3 (length (format-mode-line mode-line-align-right))))
+   '(:eval (mode-line-fill 'mode-line (+ 3 (length (format-mode-line mode-line-align-right)))))
    mode-line-align-right
    )
 )
