@@ -13,7 +13,7 @@
 (show-paren-mode 1)
 
 ;; Show line numbers in buffer
-(linum-mode 1)
+(global-linum-mode 1)
 
 ;; Set the default theme.
 (load-theme 'zenburn t)
