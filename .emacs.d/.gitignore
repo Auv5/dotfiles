@@ -4,3 +4,4 @@ auto-save-list
 ido.last
 *.elc
 ac-comphist.dat
+session.*
