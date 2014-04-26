@@ -14,3 +14,6 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
 (require 'auto-complete-config)
 (ac-config-default)
+
+;; Save a couple characters with y-or-n instead of yes-or-no.
+(defalias 'yes-or-no-p 'y-or-n-p)

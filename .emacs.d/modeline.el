@@ -4,13 +4,35 @@
 (column-number-mode 1)
 
 ;; Set up how the individual parts of the modeline should look.
-(setq-default mode-line-modified '(:eval (if (buffer-file-name) (if (file-exists-p (buffer-file-name)) (if (buffer-modified-p) " (Modified) " " (Unmodified) ") " (New) ") "")))
+(setq-default mode-line-modified
+	      '(:eval
+		(if (buffer-file-name)
+		    (if (file-exists-p (buffer-file-name)) (if (buffer-modified-p)
+							       " (Modified) "
+							     " (Unmodified) ")
+		      " (New) ")
+		  "")))
 (setq-default mode-line-modes mode-name)
 
-;; Yellow if column > 80, red if column > 100
-(setq-default mode-line-position '(:eval (if (< (current-column) 80) "%c" (if (> (current-column) 100) (propertize "%c" 'face '((foreground-color . "red"))) (propertize "%c" 'face '((foreground-color . "yellow")))))))
+(defconst MODES-NO-COLUMN '("ERC"))
 
-(setq mode-line-align-left '("%e" mode-line-front-space mode-line-client mode-line-buffer-identification mode-line-modified))
+;; Yellow if column > 80, red if column > 100
+(setq-default mode-line-position
+	      '(:eval
+		(unless (member mode-name MODES-NO-COLUMN)
+		  (if (< (current-column) 80)
+		    "%c"
+		    (if (> (current-column) 100)
+		        (propertize "%c" 'face '((foreground-color . "red")))
+		        (propertize "%c" 'face '((foreground-color . "yellow"))))))))
+
+(setq-default mode-line-buffer-identification
+      '(:eval (propertize (buffer-name) 'face 'mode-line-buffer-id)))
+
+(setq mode-line-align-left
+      '("%e" mode-line-front-space mode-line-client
+	mode-line-buffer-identification mode-line-modified))
+
 ;; For some reason there must be an empty space at the beginning or the position disappears.
 (setq mode-line-align-right '("" mode-line-position (vc-mode vc-mode)))
 
@@ -31,7 +53,8 @@
 ;; This will right-align the text in mode-line-align-right with three spaces of padding on the right.
 (setq-default mode-line-format (list
    mode-line-align-left
-   '(:eval (mode-line-fill 'mode-line (+ 3 (length (format-mode-line mode-line-align-right)))))
+   '(:eval (mode-line-fill 'mode-line
+			   (+ 3 (length (format-mode-line mode-line-align-right)))))
    mode-line-align-right
    )
 )
