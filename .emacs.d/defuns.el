@@ -5,5 +5,6 @@
 ;; All of EmacsWiki is licensed under GPL v2 (which is compatible with GPL v3), so this declaration should be enough.
 ;; TODO: Test this on Windows.
 (defun font-existsp (font)
-    (if (null (x-list-fonts font))
-        nil t))
+  (if window-system
+      (if (null (x-list-fonts font))
+	  nil t) nil))

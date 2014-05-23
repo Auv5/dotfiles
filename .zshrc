@@ -18,7 +18,7 @@ bindkey -v
 
 PROMPT='[%n %~%b] %# '
 
-export TERM='gnome-256color'
+if [[ -z $TMUX ]]; then export TERM='gnome-256color'; fi
 
 export EDITOR='nvim'
 
