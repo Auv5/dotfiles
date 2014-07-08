@@ -13,7 +13,7 @@ HISTSIZE=10000
 SAVEHIST=100000
 setopt notify
 unsetopt appendhistory autocd beep extendedglob nomatch
-bindkey -v
+bindkey -e
 # End of lines configured by zsh-newuser-install
 
 PROMPT='[%n %~%b] %# '
@@ -22,6 +22,6 @@ if [ -z "$TMUX" ]; then export TERM='xterm-256color'; fi
 
 if [ "$TMUX" ]; then alias emacs='emacs -nw'; fi 
 
-export EDITOR='nvim'
+export EDITOR='vim'
 
 export PATH=$PATH:/opt/android-studio/sdk/platform-tools
