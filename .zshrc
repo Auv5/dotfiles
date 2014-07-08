@@ -18,7 +18,7 @@ bindkey -v
 
 PROMPT='[%n %~%b] %# '
 
-if [ -z "$TMUX" ]; then export TERM='gnome-256color'; fi
+if [ -z "$TMUX" ]; then export TERM='xterm-256color'; fi
 
 if [ "$TMUX" ]; then alias emacs='emacs -nw'; fi 
 

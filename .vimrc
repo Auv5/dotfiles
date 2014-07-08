@@ -9,12 +9,12 @@ set softtabstop=4
 filetype indent on
 
 syntax on
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'jnurmine/Zenburn'
 
 color zenburn
