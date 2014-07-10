@@ -12,4 +12,4 @@ if [ "$f" != "." ] && [ "$f" != ".." ] && [ "$f" != ".git" ] && [ "$f" != ".gitm
 fi
 done;
 
-+vim -E -c BundleInstall -c qall
+vim -E -c BundleInstall -c qall
