@@ -7,9 +7,9 @@ git submodule update --init --recursive;
 
 for f in .*; 
 do
-if [ "$f" != "." ] && [ "$f" != ".." ]; then
-  ln -s $f ~/$f;
+if [ "$f" != "." ] && [ "$f" != ".." ] && [ "$f" != ".git" ] && [ "$f" != ".gitmodules" ] && [ ! -e ~/$f ]; then
+  ln -s `pwd`/$f ~/$f;
 fi
 done;
 
-vim -es -c "BundleInstall" -c "q"
+# vim -es -c "BundleInstall" -c "q"
