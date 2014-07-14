@@ -46,3 +46,6 @@
 (global-set-key (kbd "M-2") 'split-window-below)
 (global-set-key (kbd "M-3") 'split-window-right)
 (global-set-key (kbd "M-o") 'other-window)
+
+;; Make enter automatically indent
+(global-set-key (kbd "RET") 'newline-and-indent)

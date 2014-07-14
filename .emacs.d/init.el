@@ -22,5 +22,8 @@
 ;; Commands/keybinds
 (load "~/.emacs.d/commands.el")
 
+;; Code style
+(load "~/.emacs.d/style.el")
+
 ;; Autocompletion of any kind (Ido, Smex, Auto-Complete.el)
 (load "~/.emacs.d/completion.el")
