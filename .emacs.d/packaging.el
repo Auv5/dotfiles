@@ -10,7 +10,8 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
-(defconst PACKAGES-TO-INSTALL '(zenburn-theme smex auto-complete))
+(defconst PACKAGES-TO-INSTALL '(zenburn-theme smex
+					      auto-complete cmake-mode))
 
 (setq need-update-packages nil)
 
