@@ -24,4 +24,4 @@ if [ "$TMUX" ]; then alias emacs='emacs -nw'; fi
 
 export EDITOR='vim'
 
-export PATH=$PATH:/opt/android-studio/sdk/platform-tools
+export PATH=$PATH:/opt/android-studio/sdk/platform-tools:$(ruby -rubygems -e "puts Gem.user_dir")/bin
