@@ -21,10 +21,10 @@
 	      '(:eval
 		(unless (member mode-name MODES-NO-COLUMN)
 		  (if (< (current-column) 80)
-		    "%c"
+		    "%l/C%c"
 		    (if (> (current-column) 100)
-		        (propertize "%c" 'face '((foreground-color . "red")))
-		        (propertize "%c" 'face '((foreground-color . "yellow"))))))))
+		        (propertize "%l/C%c" 'face '((foreground-color . "red")))
+		      (propertize "%l/C%c" 'face '((foreground-color . "yellow"))))))))
 
 (setq-default mode-line-buffer-identification
       '(:eval (propertize (buffer-name) 'face 'mode-line-buffer-id)))
@@ -49,12 +49,14 @@
 ;; end source
 
 
+(defconst RIGHT_PADDING 2)
+
 ;; Actually set the mode line using the variables above.
 ;; This will right-align the text in mode-line-align-right with three spaces of padding on the right.
 (setq-default mode-line-format (list
    mode-line-align-left
    '(:eval (mode-line-fill 'mode-line
-			   (+ 3 (length (format-mode-line mode-line-align-right)))))
+			   (+ RIGHT_PADDING (length (format-mode-line mode-line-align-right)))))
    mode-line-align-right
    )
 )
