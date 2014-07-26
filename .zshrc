@@ -16,7 +16,7 @@ unsetopt appendhistory autocd beep extendedglob nomatch
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-PROMPT='[%n %~%b] %# '
+PROMPT='[%n@%m %~%b] %# '
 
 if [ -z "$TMUX" ]; then export TERM='xterm-256color'; fi
 
