@@ -11,8 +11,8 @@
 
 ;; Auto-Complete.el completion in code buffers.
 (require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
 (require 'auto-complete-config)
+(setq ac-ignore-case nil)
 (ac-config-default)
 
 ;; Save a couple characters with y-or-n instead of yes-or-no.
