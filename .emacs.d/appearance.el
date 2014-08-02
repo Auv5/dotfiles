@@ -8,6 +8,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+(horizontal-scroll-bar-mode 0)
 
 ;; Match parens more visibly
 (show-paren-mode 1)

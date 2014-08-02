@@ -15,7 +15,8 @@
 					      smartparens ag
 					      enh-ruby-mode textmate
 					      rinari rhtml-mode
-					      markdown-mode))
+					      markdown-mode flycheck
+					      pydoc-info web-mode))
 
 (setq need-update-packages nil)
 

@@ -27,3 +27,6 @@
 
 ;; Autocompletion of any kind (Ido, Smex, Auto-Complete.el)
 (load "~/.emacs.d/completion.el")
+
+(load "~/.emacs.d/modes.el")
+

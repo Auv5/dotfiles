@@ -16,5 +16,15 @@
 
 (textmate-mode 1)
 
+(defun general-markdown-hook ()
+  (flyspell-mode 1))
+
+(add-hook 'markdown-mode 'general-markdown-hook)
+(add-hook 'gfm-mode 'general-markdown-hook)
+
 ;; GitHub Flavoured Markdown
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
