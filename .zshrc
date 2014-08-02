@@ -7,6 +7,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Hub is a wrapper around Git for GitHub.
+alias git=hub
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -25,3 +28,6 @@ if [ "$TMUX" ]; then alias emacs='emacs -nw'; fi
 export EDITOR='vim'
 
 export PATH=$PATH:/opt/android-studio/sdk/platform-tools:$(ruby -rubygems -e "puts Gem.user_dir")/bin
+
+# For Android builds, cache.
+export USE_CCACHE=1
