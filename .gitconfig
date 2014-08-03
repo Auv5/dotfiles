@@ -1,0 +1,7 @@
+[user]
+	email = jackamc19@gmail.com
+	name = Jack McCracken
+[push]
+	default = simple
+[color]
+	ui = auto

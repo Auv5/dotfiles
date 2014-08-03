@@ -1,0 +1,1 @@
+/home/jack/sources/WeeChatStalker/stalker.py
