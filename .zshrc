@@ -25,9 +25,22 @@ if [ -z "$TMUX" ]; then export TERM='xterm-256color'; fi
 
 if [ "$TMUX" ]; then alias emacs='emacs -nw'; fi 
 
+
 export EDITOR='vim'
 
-export PATH=$PATH:/opt/android-studio/sdk/platform-tools:$(ruby -rubygems -e "puts Gem.user_dir")/bin
+export PATH=$PATH
+
+gempath=$(ruby -rubygems -e "puts Gem.user_dir")/bin
+
+if [ -d $gempath ]; then
+    export PATH=$PATH:$gempath
+fi
+
+android_path=/opt/android-studio/sdk/platform-tools
+
+if [ -d $android_path ]; then
+    export PATH=$PATH:$android_path
+fi
 
 # For Android builds, cache.
 export USE_CCACHE=1
