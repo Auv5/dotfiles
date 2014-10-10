@@ -24,6 +24,7 @@ fi
 
 if command -v emacs > /dev/null 2>&1; then
     if emacs --version | grep "23" > /dev/null 2>&1; then
+        mkdir -p ~/.emacs.d/packages
         wget http://bit.ly/pkg-el23 -O ~/.emacs.d/packages/package.el > /dev/null 2>&1
         echo "Downloaded Emacs 23 package.el"
     fi
