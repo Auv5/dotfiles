@@ -29,4 +29,3 @@
 (load "~/.emacs.d/completion.el")
 
 (load "~/.emacs.d/modes.el")
-

@@ -1,3 +1,6 @@
 \#*\#
 .emacs.d/elpa
 .vim/.netrwhist
+.emacs.d/tramp
+.emacs.d/packages
+*.swp

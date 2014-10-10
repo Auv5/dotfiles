@@ -14,7 +14,7 @@
 					      rinari rhtml-mode
 					      markdown-mode flycheck
 					      pydoc-info web-mode
-					      coffee-mode))
+					      coffee-mode processing-mode))
 
 (setq need-update-packages nil)
 

@@ -26,3 +26,10 @@
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+
+;; Processing mode
+(setq processing-location "/usr/bin/processing-java")
+(setq processing-application-dir "/usr/share/processing")
+(setq processing-sketchbook-dir "/home/jack/sketchbook")
+(setq processing-output-dir "/tmp")
