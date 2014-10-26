@@ -20,7 +20,7 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 PROMPT='[%n@%m %~%b] %# '
-if [ -z "$TMUX" ]; then export TERM='xterm-256color'; fi
+if [ -z "$TMUX" ]; then export TERM='screen-256color'; fi
 
 if [ "$TMUX" ]; then alias emacs='emacs -nw'; fi 
 
@@ -43,6 +43,12 @@ fi
 
 if [ -e /usr/share/doc/pkgfile/command-not-found.zsh ]; then
     source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
+kde5_path=/opt/kf5/bin
+
+if [ -d $kde5_path ]; then
+    export PATH=$PATH:$kde5_path
 fi
 
 # An alias so that GitHub and the school servers are updated when I push my schoolwork

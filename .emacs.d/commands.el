@@ -34,6 +34,10 @@
   (global-linum-mode (if linum-enabled 1 0))
   (linum-mode (if linum-enabled 1 0)))
 
+(defun toggle-theme ()
+  (interactive)
+  ())
+
 ;; Bind C-c C-c to linum toggle.
 (global-set-key (kbd "C-c C-c") 'toggle-linum-mode)
 
