@@ -2,6 +2,6 @@
 	email = jackamc19@gmail.com
 	name = Jack McCracken
 [push]
-	default = simple
+	default = current
 [color]
 	ui = auto

@@ -5,6 +5,11 @@
 (setq package-archives
       '(("melpa" . "http://melpa.milkbox.net/packages/")))
 
+(if (< emacs-major-version 24)
+    (progn 
+      (add-to-list 'load-path "~/.emacs.d/packages")
+      (require 'package)))
+
 (package-initialize)
 
 (defconst PACKAGES-TO-INSTALL                '(zenburn-theme smex
@@ -19,11 +24,16 @@
 (setq need-update-packages nil)
 
 (dolist (package PACKAGES-TO-INSTALL) 
-  (if (not (package-installed-p package)) (setq need-update-packages t)))
+  (progn
+    (if (not (package-installed-p package)) (setq need-update-packages t))))
 
 (if need-update-packages 
     (progn
       (package-refresh-contents)
       (dolist (package PACKAGES-TO-INSTALL) 
-	(if (not (package-installed-p package)) (package-install package)))))
+	(progn
+	  (message (concat "Installing " (symbol-name package)))
+	  (condition-case nil
+	      (if (not (package-installed-p package)) (package-install package))
+	    (error nil))))))
 
