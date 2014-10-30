@@ -1,7 +1,6 @@
 #!/bin/sh
 
 command -v git >/dev/null 2>&1 || { echo >&2 "This script requires Git to be installed and on PATH. Aborting."; exit 1; }
-command -v wget >/dev/null 2>&1 || { echo >&2 "This script requires wget to be installed and on PATH. Aborting."; exit 1; }
 
 echo "Checking Git submodules..."
 git submodule update --init --recursive > /dev/null;
