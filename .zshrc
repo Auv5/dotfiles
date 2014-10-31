@@ -8,7 +8,9 @@ compinit
 # End of lines added by compinstall
 
 # Hub is a wrapper around Git for GitHub.
-alias git=hub
+if command -v hub > /dev/null 2>&1; then
+    alias git=hub
+fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
