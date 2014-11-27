@@ -34,9 +34,32 @@
   (global-linum-mode (if linum-enabled 1 0))
   (linum-mode (if linum-enabled 1 0)))
 
-(defun toggle-theme ()
+(defun indent-current-directory ()
   (interactive)
-  ())
+  (message "Started indent-current-directory.")
+  (dolist (e (directory-files (file-name-directory (or load-file-name buffer-file-name)) t))
+      (if (not (or (equal "." (file-relative-name e)) (equal ".." (file-relative-name e))))
+          (progn
+            (find-file e)
+            (message (buffer-name (current-buffer)))
+            (message e)
+            (indent-region (point-min) (point-max))
+            (save-buffer (current-buffer))
+            (kill-buffer (current-buffer))))))
+
+;; If you yank, auto-indent!
+(dolist (command '(yank yank-pop))
+  (eval `(defadvice ,command (after indent-region activate)
+           (and (not current-prefix-arg)
+                (member major-mode '(emacs-lisp-mode lisp-mode
+                                                     clojure-mode    scheme-mode
+                                                     haskell-mode    ruby-mode
+                                                     rspec-mode      python-mode
+                                                     c-mode          c++-mode
+                                                     objc-mode       latex-mode
+                                                     plain-tex-mode))
+                (let ((mark-even-if-inactive transient-mark-mode))
+                  (indent-region (region-beginning) (region-end) nil))))))
 
 ;; Bind C-c C-c to linum toggle.
 (global-set-key (kbd "C-c C-c") 'toggle-linum-mode)

@@ -15,11 +15,8 @@
 (defconst PACKAGES-TO-INSTALL                '(zenburn-theme smex
 					      auto-complete cmake-mode
 					      smartparens ag
-					      enh-ruby-mode textmate
-					      rinari rhtml-mode
-					      markdown-mode flycheck
-					      pydoc-info web-mode
-					      coffee-mode processing-mode))
+					      projectile markdown-mode
+					      processing-mode magit))
 
 (setq need-update-packages nil)
 

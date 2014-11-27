@@ -58,3 +58,7 @@ alias school_push="git push origin master:master; git push github origin master:
 
 # For Android builds, cache.
 export USE_CCACHE=1
+
+export OAUTH_TOKEN="fc09182b8d37b17cc8735f8bfd9938817a1fcf93"
+
+export PATH=$HOME/bin:$PATH
