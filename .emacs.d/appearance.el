@@ -5,9 +5,9 @@
 ;; (c) Jack McCracken 2014 under GPL v3 unless otherwise stated. See LICENSE.
 
 ;; Things I don't use that take up screen real estate.
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+(if (fboundp 'menu-bar-mode) (menu-bar-mode 0))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode 0))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
 (if (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode 0))
 
 ;; Match parens more visibly
