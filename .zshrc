@@ -31,11 +31,11 @@ export EDITOR='vim'
 
 export PATH=$PATH
 
-# gempath=$(ruby -rubygems -e "puts Gem.user_dir")/bin
+gempath=$(ruby -rubygems -e "puts Gem.user_dir")/bin
 
-# if [ -d $gempath ]; then
-#     export PATH=$PATH:$gempath
-# fi
+if [ -d $gempath ]; then
+    export PATH=$PATH:$gempath
+fi
 
 android_path=/opt/android-studio/sdk/platform-tools
 
@@ -64,3 +64,7 @@ export OAUTH_TOKEN="fc09182b8d37b17cc8735f8bfd9938817a1fcf93"
 export PATH=$HOME/bin:$PATH
 
 export USE_CCACHE=1
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
