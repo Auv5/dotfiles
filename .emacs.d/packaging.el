@@ -16,7 +16,8 @@
 					      auto-complete cmake-mode
 					      smartparens ag
 					      projectile markdown-mode
-					      processing-mode magit))
+					      processing-mode magit
+                                              rust-mode))
 
 (setq need-update-packages nil)
 

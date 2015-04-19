@@ -9,6 +9,8 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode 0))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
 (if (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode 0))
+;; Make sure we scroll line-by-line.
+(setq scroll-step 1)
 
 ;; Match parens more visibly
 (show-paren-mode 1)

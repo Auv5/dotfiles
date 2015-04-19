@@ -16,6 +16,8 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/Vundle.vim'
 Bundle 'jnurmine/Zenburn'
+" Adds commands to Vim to surround things (i.e. (), "")
+Bundle 'tpope/vim-surround'
 
 color zenburn
 

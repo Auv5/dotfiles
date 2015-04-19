@@ -25,3 +25,11 @@
 ;; Projectile
 (add-hook 'c-mode-common-hook 'projectile-mode)
 (add-hook 'python-mode-hook 'projectile-mode)
+(add-hook 'rust-mode-hook 'projectile-mode)
+
+(defconst SPELL-CHECK-MODE-HOOKS '(markdown-mode-hook org-mode-hook))
+
+(dolist (hook SPELL-CHECK-MODE-HOOKS)
+  (add-hook hook 'flyspell-mode))
+
+
