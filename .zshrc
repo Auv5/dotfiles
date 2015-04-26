@@ -17,14 +17,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-## Aliases
-# Conditional, so if it doesn't exist then we don't addd it
-# (Otherwise Git wouldn't work on machines w/o hub)
-# Hub is a wrapper around Git for GitHub.
-if command -v hub > /dev/null 2>&1; then
-    alias git=hub
-fi
-
 # Customize the prompt
 PROMPT='[%n@%m %~%b] %# '
 
@@ -86,6 +78,14 @@ if [ -d $user_bin ]; then
     export PATH="$user_bin:$PATH"
 fi
 
+## Aliases
+# Conditional, so if it doesn't exist then we don't addd it
+# (Otherwise Git wouldn't work on machines w/o hub)
+# Hub is a wrapper around Git for GitHub.
+if command -v hub > /dev/null 2>&1; then
+    alias git=hub
+fi
+
 usr_local_lib="/usr/local/lib"
 if [ -d $usr_local_lib ]; then
     export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
@@ -96,7 +96,3 @@ alias school_push="git push origin master:master; git push github origin master:
 
 # For Android builds, cache.
 export USE_CCACHE=1
-
-# CCache, technology for faster Android builds.
-export USE_CCACHE=1
-
