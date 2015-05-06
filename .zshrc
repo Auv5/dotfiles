@@ -96,3 +96,13 @@ alias school_push="git push origin master:master; git push github origin master:
 
 # For Android builds, cache.
 export USE_CCACHE=1
+
+if command -v boot2docker > /dev/null 2>&1; then
+    export DOCKER_HOST=tcp://192.168.59.103:2375
+    unset DOCKER_CERT_PATH
+    unset DOCKER_TLS_VERIFY
+fi
+
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh/site-functions/ /usr/local/share/zsh-completions $fpath)
+fi
