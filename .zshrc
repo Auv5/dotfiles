@@ -106,3 +106,14 @@ fi
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh/site-functions/ /usr/local/share/zsh-completions $fpath)
 fi
+
+if [ -e ~/virtualenvs ]; then
+    venv() { 
+        if [ $# -ne 1 ]; then
+            echo "Please give one argument, the name of the virtualenv to source." > /dev/stderr
+        else
+            echo "Sourcing $1..."
+            source "$HOME/virtualenvs/$1/bin/activate"
+        fi
+    }
+fi
