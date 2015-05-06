@@ -116,4 +116,20 @@ if [ -e ~/virtualenvs ]; then
             source "$HOME/virtualenvs/$1/bin/activate"
         fi
     }
+    mkvenv() {
+        if [ $# -eq 1 ] || [ $# -eq 2 ]; then
+            pushd ~/virtualenvs
+            python=$2
+            if [ ! $python ]; then
+                python=python2
+            fi
+            virtualenv -p $python $1
+            popd
+        else
+            echo "Please give either 1 or 2 arguments, in the form mkvenv <name> <python to use>" > /dev/stderr
+        fi
+    }
+    mkvenv3() {
+        mkvenv $1 python3
+    }
 fi
