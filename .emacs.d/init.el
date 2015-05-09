@@ -29,3 +29,5 @@
 (load "~/.emacs.d/completion.el")
 
 (load "~/.emacs.d/modes.el")
+
+(put 'upcase-region 'disabled nil)

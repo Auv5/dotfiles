@@ -32,4 +32,5 @@
 (dolist (hook SPELL-CHECK-MODE-HOOKS)
   (add-hook hook 'flyspell-mode))
 
-
+;; Magit
+(setq magit-last-seen-setup-instructions "1.4.0")
