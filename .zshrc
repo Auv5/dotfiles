@@ -103,6 +103,23 @@ if command -v boot2docker > /dev/null 2>&1; then
     unset DOCKER_TLS_VERIFY
 fi
 
+if command -v docker > /dev/null 2>&1; then
+    stopdocker() {
+        echo "Stopping containers matching $1..."
+        count=$(docker stop $(docker ps -a | grep $1 | tr -s ' ' | cut -f1 -d ' '))
+        echo "Stopped $count containers"
+    }
+    rmdocker() {
+        echo "Removing containers matching $1..."
+        count=$(docker rm $(docker ps -a | grep $1 | tr -s ' ' | cut -f1 -d ' ') | wc -l)
+        echo "Removed $count containers"
+    }
+    clsdocker() {
+        stopdocker $1
+        rmdocker $1
+    }
+fi
+
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh/site-functions/ /usr/local/share/zsh-completions $fpath)
 fi
