@@ -1,5 +1,0 @@
-logs/*
-weechat.log
-script/plugins.xml.gz
-stalker/stalker.db
-*.weechattmp
