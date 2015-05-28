@@ -39,6 +39,11 @@ if command -v ruby > /dev/null 2>&1; then
     fi
 fi
 
+adb_mac_path="$HOME/Library/Android/sdk"
+if [ -d "$adb_mac_path" ]; then
+    export PATH="$PATH:$adb_mac_path/platform:$adb_mac_path/platform-tools"
+fi
+
 # Android platform tools.
 android_path="/opt/android-studio/sdk/platform-tools"
 if [ -d "$android_path" ]; then
@@ -152,6 +157,7 @@ if [ -e ~/virtualenvs ]; then
                 python=python2
             fi
             virtualenv -p $python $1
+            venv $1
             popd
         else
             echo "Please give either 1 or 2 arguments, in the form mkvenv <name> <python to use>" > /dev/stderr
