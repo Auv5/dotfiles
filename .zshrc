@@ -30,6 +30,7 @@ export EDITOR='vim'
 
 ## PATH
 # Conditionally add things to the path if they exist
+
 # Gems, for Ruby
 if command -v ruby > /dev/null 2>&1; then
     gempath="$(ruby -rubygems -e "puts Gem.user_dir")/bin"
@@ -37,6 +38,16 @@ if command -v ruby > /dev/null 2>&1; then
     if [ -d "$gempath" ]; then
         export PATH="$PATH:$gempath"
     fi
+fi
+
+go_mac_path="/usr/local/opt/go/libexec/bin"
+if [ -d "$go_mac_path" ]; then
+    export PATH="$PATH:$go_mac_path"
+fi
+
+adb_mac_path="$HOME/Library/Android/sdk"
+if [ -d "$adb_mac_path" ]; then
+    export PATH="$PATH:$adb_mac_path/platform:$adb_mac_path/platform-tools"
 fi
 
 # Android platform tools.
@@ -72,6 +83,12 @@ if [ -d "$cabal_bin" ]; then
     export PATH="$PATH:$cabal_bin"
 fi
 
+# /usr/local/sbin - this doesn't go on the PATH by default in OS X
+usr_local_sbin="/usr/local/sbin"
+if [ -d "$usr_local_sbin" ]; then
+    export PATH="$PATH:$usr_local_sbin"
+fi
+
 # Generic ~/bin directory, for user-specific binaries.
 user_bin="$HOME/bin"
 if [ -d $user_bin ]; then
@@ -98,25 +115,30 @@ alias school_push="git push origin master:master; git push github origin master:
 export USE_CCACHE=1
 
 if command -v boot2docker > /dev/null 2>&1; then
-    export DOCKER_HOST=tcp://192.168.59.103:2375
-    unset DOCKER_CERT_PATH
-    unset DOCKER_TLS_VERIFY
+    eval "$(boot2docker shellinit)"
+    b2dtls() {
+        boot2docker up
+        boot2docker ssh "sudo echo 'DOCKER_TLS=no' | sudo tee /var/lib/boot2docker/profile"
+        boot2docker down
+        boot2docker up
+        source ~/.zshrc
+    }
 fi
 
 if command -v docker > /dev/null 2>&1; then
     stopdocker() {
         echo "Stopping containers matching $1..."
-        count=$(docker stop $(docker ps -a | grep "$1" | tr -s ' ' | cut -f1 -d ' ') | wc -l)
+        count=$(docker stop $(docker ps -a | egrep "$1" | tr -s ' ' | cut -f1 -d ' ') | wc -l)
         echo "Stopped $count containers"
     }
     rmdocker() {
         echo "Removing containers matching $1..."
-        count=$(docker rm $(docker ps -a | grep "$1" | tr -s ' ' | cut -f1 -d ' ') | wc -l)
+        count=$(docker rm $(docker ps -a | egrep "$1" | tr -s ' ' | cut -f1 -d ' ') | wc -l)
         echo "Removed $count containers"
     }
     clsdocker() {
-        stopdocker $1
-        rmdocker $1
+        stopdocker "$1"
+        rmdocker "$1"
     }
 fi
 
@@ -141,6 +163,7 @@ if [ -e ~/virtualenvs ]; then
                 python=python2
             fi
             virtualenv -p $python $1
+            venv $1
             popd
         else
             echo "Please give either 1 or 2 arguments, in the form mkvenv <name> <python to use>" > /dev/stderr
