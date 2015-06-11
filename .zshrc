@@ -106,12 +106,12 @@ fi
 if command -v docker > /dev/null 2>&1; then
     stopdocker() {
         echo "Stopping containers matching $1..."
-        count=$(docker stop $(docker ps -a | grep $1 | tr -s ' ' | cut -f1 -d ' ') | wc -l)
+        count=$(docker stop $(docker ps -a | grep "$1" | tr -s ' ' | cut -f1 -d ' ') | wc -l)
         echo "Stopped $count containers"
     }
     rmdocker() {
         echo "Removing containers matching $1..."
-        count=$(docker rm $(docker ps -a | grep $1 | tr -s ' ' | cut -f1 -d ' ') | wc -l)
+        count=$(docker rm $(docker ps -a | grep "$1" | tr -s ' ' | cut -f1 -d ' ') | wc -l)
         echo "Removed $count containers"
     }
     clsdocker() {
