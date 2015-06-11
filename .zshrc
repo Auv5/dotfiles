@@ -30,6 +30,7 @@ export EDITOR='vim'
 
 ## PATH
 # Conditionally add things to the path if they exist
+
 # Gems, for Ruby
 if command -v ruby > /dev/null 2>&1; then
     gempath="$(ruby -rubygems -e "puts Gem.user_dir")/bin"
@@ -37,6 +38,11 @@ if command -v ruby > /dev/null 2>&1; then
     if [ -d "$gempath" ]; then
         export PATH="$PATH:$gempath"
     fi
+fi
+
+go_mac_path="/usr/local/opt/go/libexec/bin"
+if [ -d "$go_mac_path" ]; then
+    export PATH="$PATH:$go_mac_path"
 fi
 
 adb_mac_path="$HOME/Library/Android/sdk"
