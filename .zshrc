@@ -40,6 +40,11 @@ if command -v ruby > /dev/null 2>&1; then
     fi
 fi
 
+
+if command -v brew > /dev/null 2>&1; then
+    export PATH="/usr/local/sbin:$PATH"
+fi
+
 go_mac_path="/usr/local/opt/go/libexec/bin"
 if [ -d "$go_mac_path" ]; then
     export PATH="$PATH:$go_mac_path"
@@ -114,6 +119,8 @@ alias school_push="git push origin master:master; git push github origin master:
 # For Android builds, cache.
 export USE_CCACHE=1
 
+#if command -v docker-machine > /dev/null 2>&1; then
+#    eval "$(docker-machine env dev)"
 if command -v boot2docker > /dev/null 2>&1; then
     eval "$(boot2docker shellinit)"
     b2dtls() {
