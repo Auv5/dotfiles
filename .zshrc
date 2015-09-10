@@ -20,6 +20,9 @@ compinit
 # Customize the prompt
 PROMPT='[%n@%m %~%b] %# '
 
+## Color aliases
+alias ls="ls -l --color ";
+
 ## Tmux
 # Makes sure that tmux supports 256 colors
 if [ -z "$TMUX" ]; then export TERM='screen-256color'; fi
