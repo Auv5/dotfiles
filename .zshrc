@@ -119,17 +119,8 @@ alias school_push="git push origin master:master; git push github origin master:
 # For Android builds, cache.
 export USE_CCACHE=1
 
-#if command -v docker-machine > /dev/null 2>&1; then
-#    eval "$(docker-machine env dev)"
-if command -v boot2docker > /dev/null 2>&1; then
-    eval "$(boot2docker shellinit)"
-    b2dtls() {
-        boot2docker up
-        boot2docker ssh "sudo echo 'DOCKER_TLS=no' | sudo tee /var/lib/boot2docker/profile"
-        boot2docker down
-        boot2docker up
-        source ~/.zshrc
-    }
+if command -v docker-machine > /dev/null 2>&1; then
+    eval "$(docker-machine env dev)" > /dev/null 2>&1
 fi
 
 if command -v docker > /dev/null 2>&1; then
