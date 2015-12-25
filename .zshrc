@@ -21,7 +21,10 @@ compinit
 PROMPT='[%n@%m %~%b] %# '
 
 ## Color aliases
-alias ls="ls -l --color ";
+alias ls="ls -lG ";
+
+## Utility aliases
+alias proxy="ssh -D 1337 jackmc@ccss.carleton.ca -p 222"
 
 ## Tmux
 # Makes sure that tmux supports 256 colors
@@ -103,6 +106,12 @@ if [ -d $user_bin ]; then
     export PATH="$user_bin:$PATH"
 fi
 
+# BasicTex
+tex_location="/usr/local/texlive/2015basic/bin"
+if [ -d "$tex_location" ]; then
+    export PATH="$tex_location:$PATH"
+fi
+
 ## Aliases
 # Conditional, so if it doesn't exist then we don't addd it
 # (Otherwise Git wouldn't work on machines w/o hub)
@@ -121,6 +130,8 @@ alias school_push="git push origin master:master; git push github origin master:
 
 # For Android builds, cache.
 export USE_CCACHE=1
+
+export PYTHONPATH="$PYTHONPATH:$HOME/sources"
 
 if command -v docker-machine > /dev/null 2>&1; then
     eval "$(docker-machine env dev)" > /dev/null 2>&1
@@ -174,3 +185,6 @@ if [ -e ~/virtualenvs ]; then
         mkvenv $1 python3
     }
 fi
+
+export NVM_DIR="/Users/jackmccracken/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
