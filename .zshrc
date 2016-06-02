@@ -134,7 +134,7 @@ export USE_CCACHE=1
 export PYTHONPATH="$PYTHONPATH:$HOME/sources"
 
 if command -v docker-machine > /dev/null 2>&1; then
-    eval "$(docker-machine env dev)" > /dev/null 2>&1
+    eval "$(docker-machine env default)" > /dev/null 2>&1
 fi
 
 if command -v docker > /dev/null 2>&1; then
@@ -188,3 +188,11 @@ fi
 
 export NVM_DIR="/Users/jackmccracken/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
+# Virtualenvmanager
+venv_managerpath="/usr/local/bin/virtualenvwrapper.sh"
+[ -e $venv_managerpath ] && source $venv_managerpath
+
+export EJSON_KEYDIR="$HOME/Documents/Keys/ejson"
