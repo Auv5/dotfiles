@@ -196,3 +196,4 @@ venv_managerpath="/usr/local/bin/virtualenvwrapper.sh"
 [ -e $venv_managerpath ] && source $venv_managerpath
 
 export EJSON_KEYDIR="$HOME/Documents/Keys/ejson"
+fpath=(/usr/local/share/zsh-completions $fpath)
