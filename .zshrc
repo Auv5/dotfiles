@@ -23,8 +23,16 @@ PROMPT='[%n@%m %~%b] %# '
 ## Color aliases
 alias ls="ls -lG ";
 
+fd() {
+    find . -name "*$1*";
+}
+
 ## Utility aliases
 alias proxy="ssh -D 1337 jackmc@ccss.carleton.ca -p 222"
+
+p() {
+    cd "$HOME/sources/$1"
+}
 
 ## Tmux
 # Makes sure that tmux supports 256 colors
@@ -195,5 +203,21 @@ export NVM_DIR="/Users/jackmccracken/.nvm"
 venv_managerpath="/usr/local/bin/virtualenvwrapper.sh"
 [ -e $venv_managerpath ] && source $venv_managerpath
 
-export EJSON_KEYDIR="$HOME/Documents/Keys/ejson"
+export EJSON_KEYDIR="$HOME/Keys/ejson"
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+PATH="/Users/jackmccracken/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/jackmccracken/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/jackmccracken/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/jackmccracken/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/jackmccracken/perl5"; export PERL_MM_OPT;
+
+alias rubo="bundle exec rubocop -a "
+
+export GOPATH=$HOME
+
+export PATH=$PATH:$HOME/bin
+
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:$HOME/src/google.com/depot_tools"

@@ -5,3 +5,5 @@
 	default = current
 [color]
 	ui = auto
+[gpg]
+	program = /usr/local/bin/gpg

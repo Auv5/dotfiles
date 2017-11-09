@@ -20,5 +20,5 @@
 ;; Size 17 normal Inconsolata. If the font doesn't exist on this system or we're in a terminal, just
 ;; let the default be used.
 (defconst DEFAULT-FACE-FONT
-  "-unknown-Inconsolata-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1")
+  "-unknown-Inconsolata-normal-normal-normal-*-24-*-*-*-m-0-iso10646-1")
 (if (font-existsp DEFAULT-FACE-FONT) (set-face-font 'default DEFAULT-FACE-FONT))
