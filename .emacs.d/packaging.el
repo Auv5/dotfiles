@@ -17,7 +17,10 @@
 					      smartparens ag
 					      projectile markdown-mode
 					      processing-mode magit
-                                              rust-mode))
+                                              rust-mode
+                                              helm-projectile
+                                              flx flx-ido
+                                              helm-projectile))
 
 (setq need-update-packages nil)
 

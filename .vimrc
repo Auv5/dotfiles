@@ -9,17 +9,12 @@ set softtabstop=2
 filetype indent on
 
 syntax on
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/Vundle.vim'
-Bundle 'jnurmine/Zenburn'
-" Adds commands to Vim to surround things (i.e. (), "")
-Bundle 'tpope/vim-surround'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-color zenburn
+" Initialize plugin system
+call plug#end()
 
 let mapleader  = ","
 

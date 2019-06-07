@@ -6,4 +6,10 @@
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq backup-by-copying t)
 
+;; Turn off annoying bell
+(setq visible-bell nil
+      ring-bell-function 'do-nothing)
+
+(defun do-nothing ())
+
 (setq-default fill-column 80)

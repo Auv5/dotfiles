@@ -20,9 +20,9 @@
 (setq-default mode-line-position
 	      '(:eval
 		(unless (member mode-name MODES-NO-COLUMN)
-		  (if (< (current-column) 80)
+		  (if (< (current-column) 100)
 		    "%l/C%c"
-		    (if (> (current-column) 100)
+		    (if (> (current-column) 120)
 		        (propertize "%l/C%c" 'face '((foreground-color . "red")))
 		      (propertize "%l/C%c" 'face '((foreground-color . "yellow"))))))))
 

@@ -29,6 +29,7 @@ fd() {
 
 ## Utility aliases
 alias proxy="ssh -D 1337 jackmc@ccss.carleton.ca -p 222"
+alias vim="nvim"
 
 p() {
     cd "$HOME/sources/$1"
@@ -67,6 +68,7 @@ fi
 adb_mac_path="$HOME/Library/Android/sdk"
 if [ -d "$adb_mac_path" ]; then
     export PATH="$PATH:$adb_mac_path/platform:$adb_mac_path/platform-tools"
+    export PATH="$PATH:$adb_mac_path/platform:$adb_mac_path/tools"
 fi
 
 # Android platform tools.
@@ -221,3 +223,23 @@ export PATH=$PATH:$HOME/bin
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/src/google.com/depot_tools"
+alias dcd="dev cd"
+alias be="bundle exec"
+alias dti="dev test --include-branch-commits"
+
+chruby 2.5.0
+
+# Added by Krypton
+export GPG_TTY=$(tty)
+
+# cloudplatform: add Shopify clusters to your local kubernetes config
+export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}/Users/jackmc/.kube/config:/Users/jackmccracken/.kube/config.shopify.cloudplatform
+
+source /usr/local/bin/virtualenvwrapper.sh
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+zipedit(){
+    echo "Usage: zipedit archive.zip file.txt"
+    unzip "$1" "$2" -d /tmp 
+    vim /tmp/$2 && zip -j --update "$1"  "/tmp/$2" 
+}
