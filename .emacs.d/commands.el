@@ -61,8 +61,14 @@
                 (let ((mark-even-if-inactive transient-mark-mode))
                   (indent-region (region-beginning) (region-end) nil))))))
 
+(defun copy-relative-projectile-path ()
+  (interactive)
+  (kill-new (file-relative-name buffer-file-name (projectile-project-root))))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Bind C-c C-c to linum toggle.
-(global-set-key (kbd "C-c C-c") 'toggle-linum-mode)
+(global-set-key (kbd "C-c C-c") 'copy-relative-projectile-path)
 
 ;; Bind to C-a to replace old beginning-of-line command.
 (global-set-key (kbd "C-a") 'conditional-back-to-indent)

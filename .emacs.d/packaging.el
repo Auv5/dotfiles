@@ -20,7 +20,8 @@
                                               rust-mode
                                               helm-projectile
                                               flx flx-ido
-                                              helm-projectile))
+                                              helm-projectile
+                                              yaml-mode))
 
 (setq need-update-packages nil)
 

@@ -6,6 +6,7 @@
 (require 'smartparens-ruby)
 (smartparens-global-mode)
 (show-smartparens-global-mode t)
+(global-linum-mode 1)
 
 ;; Markdown mode
 (defun general-markdown-hook ()
