@@ -196,12 +196,13 @@ if [ -e ~/virtualenvs ]; then
     }
 fi
 
-export NVM_DIR="/Users/jackmccracken/.nvm"
+export NVM_DIR="/Users/jackmc/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
 # Virtualenvmanager
+VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 venv_managerpath="/usr/local/bin/virtualenvwrapper.sh"
 [ -e $venv_managerpath ] && source $venv_managerpath
 
@@ -223,11 +224,17 @@ export PATH=$PATH:$HOME/bin
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/src/google.com/depot_tools"
-alias dcd="dev cd"
+if command -v dev > /dev/null 2>&1; then
+  alias dcd="dev cd"
+else
+  dcd() {
+          cd $(find ~/src -mindepth 3 -maxdepth 3 -type d | fzf --filter "$1" | tail -1)
+  }
+fi
+
+
 alias be="bundle exec"
 alias dti="dev test --include-branch-commits"
-
-chruby 2.5.0
 
 # Added by Krypton
 export GPG_TTY=$(tty)
@@ -242,4 +249,21 @@ zipedit(){
     echo "Usage: zipedit archive.zip file.txt"
     unzip "$1" "$2" -d /tmp 
     vim /tmp/$2 && zip -j --update "$1"  "/tmp/$2" 
+}
+
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+clone() {
+        dir=$HOME/src/github.com/$1
+        mkdir -p $dir
+        git clone "git@github.com:$1" $dir
+        cd $dir
+}
+clonetool() {
+        clone $1
+        dir=~/tools/$(cut -d'/' -f2 <<< $1)
+    
+        ln -s `pwd` $path
+        cd $path
 }
