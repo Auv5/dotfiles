@@ -48,7 +48,7 @@ export EDITOR='vim'
 
 # Gems, for Ruby
 if command -v ruby > /dev/null 2>&1; then
-    gempath="$(ruby -rubygems -e "puts Gem.user_dir")/bin"
+    gempath="$(ruby -rrubygems -e "puts Gem.user_dir")/bin"
 
     if [ -d "$gempath" ]; then
         export PATH="$PATH:$gempath"
@@ -63,6 +63,11 @@ fi
 go_mac_path="/usr/local/opt/go/libexec/bin"
 if [ -d "$go_mac_path" ]; then
     export PATH="$PATH:$go_mac_path"
+fi
+
+pip_linux_path="$HOME/.local/bin"
+if [ -d "$pip_linux_path" ]; then
+    export PATH="$PATH:$pip_linux_path"
 fi
 
 adb_mac_path="$HOME/Library/Android/sdk"
@@ -202,8 +207,10 @@ export NVM_DIR="/Users/jackmc/.nvm"
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
 # Virtualenvmanager
-VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+VIRTUALENVWRAPPER_PYTHON="python3"
 venv_managerpath="/usr/local/bin/virtualenvwrapper.sh"
+[ -e $venv_managerpath ] && source $venv_managerpath
+venv_managerpath="$HOME/.local/bin/virtualenvwrapper.sh"
 [ -e $venv_managerpath ] && source $venv_managerpath
 
 export EJSON_KEYDIR="$HOME/Keys/ejson"
@@ -224,11 +231,12 @@ export PATH=$PATH:$HOME/bin
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/src/google.com/depot_tools"
+export PATH="$PATH:$HOME/src/chromium.googlesource.com/chromium/tools/depot_tools"
 if command -v dev > /dev/null 2>&1; then
   alias dcd="dev cd"
 else
   dcd() {
-          cd $(find ~/src -mindepth 3 -maxdepth 3 -type d | fzf --filter "$1" | tail -1)
+          cd $(find ~/src/github.com -mindepth 2 -maxdepth 2 -type d | fzf --filter "$1" | head -1)
   }
 fi
 
@@ -242,7 +250,6 @@ export GPG_TTY=$(tty)
 # cloudplatform: add Shopify clusters to your local kubernetes config
 export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}/Users/jackmc/.kube/config:/Users/jackmccracken/.kube/config.shopify.cloudplatform
 
-source /usr/local/bin/virtualenvwrapper.sh
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 zipedit(){
@@ -251,8 +258,15 @@ zipedit(){
     vim /tmp/$2 && zip -j --update "$1"  "/tmp/$2" 
 }
 
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby_mac_path=/usr/local/opt/chruby/share/chruby
+chruby_linux_path=/usr/local/share/chruby
+[ -e $chruby_mac_path ] && chruby_path=$chruby_mac_path
+[ -e $chruby_linux_path ] && chruby_path=$chruby_linux_path
+
+if [ ! -z $chruby_path ]; then
+  source $chruby_path/chruby.sh
+  source $chruby_path/auto.sh
+fi
 
 clone() {
         dir=$HOME/src/github.com/$1
@@ -267,3 +281,5 @@ clonetool() {
         ln -s `pwd` $path
         cd $path
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
